@@ -25,9 +25,9 @@ class WeiboSpider(Spider):
 
     def start_requests(self):
         for i in range(self.follower_max_page+1):
-            yield Request(self.start_urls[0].format(i),callback=self.parse_follower,dont_filter=True)
+            yield Request(self.start_urls[0].format(i),callback=self.parse_follower)
         for j in range(self.follow_max_page+1):
-            yield Request(self.start_urls[1].format(j),callback=self.parse_follow,dont_filter=True)
+            yield Request(self.start_urls[1].format(j),callback=self.parse_follow)
 
     def parse_follower(self, response):
         print(response.text)
